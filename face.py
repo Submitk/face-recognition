@@ -262,8 +262,12 @@ class informationTest:
                 # self.openCamera()
                 # luru = 1
                 #重新打开摄像头窗口
-                face_save.generate(mkpath,number)
-                face_train.train(mkpath,number)
+                reply = QMessageBox.question(self.ui, '信息已存在', '确认重新采集人脸？', QMessageBox.Yes | QMessageBox.No, QMessageBox.No) 
+                if reply == QMessageBox.Yes:
+                    face_save.generate(mkpath,number)
+                    face_train.train(mkpath,number)
+                else:
+                     QMessageBox.question(self.ui, '提示', '可直接签到', QMessageBox.Yes)
 
             else:
                 if name and number and cla and sex and age:
